@@ -1,0 +1,29 @@
+{
+  "song1": {
+  "name": "The Joker",
+  "artist": "Steve Miller Band",
+  "tempo": "90 bpm",
+  "decade": 1970,
+  "genre": "classic rock",
+  "key": "G",
+  "id": "123"
+  },
+  "song2": {
+  "name": "Hallelujah",
+  "artist": "Jeff Buckley",
+  "tempo": "90 bpm",
+  "decade": 1990,
+  "genre": "classic rock",
+  "key": "B flat minor",
+  "id": "123"
+  },
+  "song3": {
+    "name": "Satisfaction",
+    "artist": "Rolling Stones",
+    "tempo": "120 bpm",
+    "decade": 1960,
+    "genre": "classic rock",
+    "key": "A",
+    "id": "123"
+  }
+}
