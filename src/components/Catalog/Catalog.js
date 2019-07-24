@@ -1,7 +1,7 @@
 import React from 'react';
 
 import songData from '../../helpers/data/songData';
-
+import Song from '../Song/Song';
 import './Catalog.scss';
 
 class Catalog extends React.Component {
@@ -16,9 +16,15 @@ class Catalog extends React.Component {
   }
 
   render() {
+    const songComponents = this.state.songs.map(song => (
+      <Song key={song.id} song={song}/>
+    ));
     return (
       <div className="Catalog">
-        <h1>Catalog</h1>
+      <h1>Catalog</h1>
+      <ul className="songs">
+        {songComponents}
+      </ul>
       </div>
     );
   }
