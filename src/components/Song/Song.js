@@ -22,6 +22,11 @@ class Song extends React.Component {
           <p>{song.genre}</p>
           <p>{song.key}</p>
           <p>{song.tempo}</p>
+          <button
+          disabled={!isAvailable}
+        >
+          {isAvailable ? '+' : 'Need to Learn!'}
+        </button>
       </li>
     );
   }
