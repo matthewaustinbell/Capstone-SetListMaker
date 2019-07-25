@@ -17,11 +17,11 @@ class Song extends React.Component {
         <h3 className="name">
           {song.name}
         </h3>
-          <p>{song.artist}</p>
-          <p>{song.decade}</p>
-          <p>{song.genre}</p>
-          <p>{song.key}</p>
-          <p>{song.tempo}</p>
+          <div>{song.artist}</div>
+          <div>{song.decade}</div>
+          <div>{song.genre}</div>
+          <div>{song.key}</div>
+          <div>{song.tempo}</div>
           <button
           disabled={!isAvailable}
         >
