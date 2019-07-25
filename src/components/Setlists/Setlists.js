@@ -12,7 +12,7 @@ class Setlists extends React.Component {
   }
 
   componentDidMount() {
-    setlistsData.getMySetlists(firebase.auth().currentSetlist.uid)
+    setlistsData.getMySetlists(firebase.auth().currentUser.uid)
       .then(orders => this.setState({ orders }))
       .catch(err => console.error('cant get orders', err));
   }
