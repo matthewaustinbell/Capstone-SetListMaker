@@ -1,17 +1,16 @@
 {
   "setlist0": {
-    "name": "Rock Set List",
     "description": "Songs that Rock",
     "id": "123",
-  "songs": {
-  "song1": 2,
-  "song2": 2,
-  "song4": 2
-  },
-  "uid": "Fj1V371CA1bTuu9q4iMkfDOKrTX2"
+    "songs": {
+      "song1": 2,
+      "song2": 2,
+      "song4": 2
+    },
+    "uid": "Fj1V371CA1bTuu9q4iMkfDOKrTX2",
+    "name": "Rock Set List"
   },
   "setlist1": {
-    "name": "Original Set List",
     "description": "Original Songs",
     "id": "123",
   "songs": {
@@ -20,24 +19,27 @@
   "song3": 1,
   "song4": 6
   },
-  "uid": "Fj1V371CA1bTuu9q4iMkfDOKrTX2"
+  "uid": "Fj1V371CA1bTuu9q4iMkfDOKrTX2",
+  "name": "Original Set List"
   },
   "setlist2": {
-    "name": "Country Set List",
     "description": "Country Songs",
     "id": "123",
     "songs": {
       "song9": 2,
       "song8": 1
   },
-  "uid": "Fj1V371CA1bTuu9q4iMkfDOKrTX2"
+  "uid": "Fj1V371CA1bTuu9q4iMkfDOKrTX2",
+  "name": "Country Set List"
   },
   "setlist3": {
-  "dateTime": 1523090972286,
-  "songs": {
-  "song4": 2,
-  "song9": 1
+    "description": "Rock Opera Songs",
+    "id": "123",
+    "songs": {
+      "song9": 2,
+      "song8": 1
   },
-  "uid": "12345"
+  "uid": "Fj1V371CA1bTuu9q4iMkfDOKrTX2",
+  "name": "Rock Opera Set List"
   }
 } 
