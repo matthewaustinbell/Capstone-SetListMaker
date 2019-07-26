@@ -1,24 +1,18 @@
 import React from 'react';
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import PropTypes from 'prop-types';
 
-import setlistsData from '../../helpers/data/setlistsData';
+import setlistShapes from '../../helpers/propz/setlistShapes';
 import SetlistRow from '../SetlistRow/SetlistRow';
+
 import './Setlists.scss';
 
 class Setlists extends React.Component {
-  state = {
-    setlists: [],
-  }
-
-  componentDidMount() {
-    setlistsData.getMySetlists(firebase.auth().currentUser.uid)
-      .then(setlists => this.setState({ setlists }))
-      .catch(err => console.error('cant get setlists', err));
+  static propTypes = {
+    setlists: PropTypes.arrayOf(setlistShapes.setlistShape),
   }
 
   render() {
-    const setlistComponents = this.state.setlists.map(setlist => (
+    const setlistComponents = this.props.setlists.map(setlist => (
       <SetlistRow key={setlist.id} setlist={setlist} />
     ));
 

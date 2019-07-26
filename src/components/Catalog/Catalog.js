@@ -1,22 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import songData from '../../helpers/data/songData';
+import songShapes from '../../helpers/propz/songShapes';
+
 import Song from '../Song/Song';
 import './Catalog.scss';
 
 class Catalog extends React.Component {
-  state = {
-    songs: [],
-  }
-
-  componentDidMount() {
-    songData.getSongs()
-      .then(songs => this.setState({ songs }))
-      .catch(err => console.error('could not get songs', err));
+  static propTypes = {
+    songs: PropTypes.arrayOf(songShapes.songShape),
   }
 
   render() {
-    const songComponents = this.state.songs.map(song => (
+    const songComponents = this.props.songs.map(song => (
       <Song key={song.id} song={song}/>
     ));
     return (
