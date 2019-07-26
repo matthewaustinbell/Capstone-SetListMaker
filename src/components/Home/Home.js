@@ -18,18 +18,29 @@ class Home extends React.Component {
     songs: [],
   }
 
-  componentDidMount() {
-    songData.getSongs()
-      .then(songs => this.setState({ songs }))
-      .catch(err => console.error('could not get songs', err));
-    setlistsData.getMySetlists(firebase.auth().currentUser.uid)
-      .then(setlists => this.setState({ setlists }))
-      .catch(err => console.error('could not get setlists', err));
-  }
+getSetlists = () => {
+  setlistsData.getMySetlists(firebase.auth().currentUser.uid)
+    .then(setlists => this.setState({ setlists }))
+    .catch(err => console.error('cant get setlists', err));
+}
 
-  render() {
-    const { songs, setlists } = this.state;
-    return (
+componentDidMount() {
+  songData.getSongs()
+    .then(songs => this.setState({ songs }))
+    .catch(err => console.error('could not get songs', err));
+
+  this.getSetlists();
+}
+
+deleteSetlist = (setlistId) => {
+  setlistsData.deleteSetlist(setlistId)
+    .then(() => this.getSetlists())
+    .catch(err => console.error('did not delete order', err));
+}
+
+render() {
+  const { songs, setlists } = this.state;
+  return (
       <div className="Home">
         <div className="row">
           <div className="col">
@@ -39,12 +50,12 @@ class Home extends React.Component {
            <NewSetlist />
         </div>
         <div className="col">
-        <Setlists setlists={setlists}/>
+        <Setlists setlists={setlists} deleteSetlist={this.deleteSetlist}/>
         </div>
       </div>
     </div>
-    );
-  }
+  );
+}
 }
 
 export default Home;

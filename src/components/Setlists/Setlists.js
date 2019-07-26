@@ -9,11 +9,12 @@ import './Setlists.scss';
 class Setlists extends React.Component {
   static propTypes = {
     setlists: PropTypes.arrayOf(setlistShapes.setlistShape),
+    deleteSetlist: PropTypes.func.isRequired,
   }
 
   render() {
     const setlistComponents = this.props.setlists.map(setlist => (
-      <SetlistRow key={setlist.id} setlist={setlist} />
+      <SetlistRow key={setlist.id} setlist={setlist} deleteSetlist={this.props.deleteSetlist}/>
     ));
 
     return (
