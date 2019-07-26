@@ -16,4 +16,6 @@ const getMySetlists = uid => new Promise((resolve, reject) => {
     .catch(err => reject(err));
 });
 
-export default { getMySetlists };
+const deleteSetlist = setlistId => axios.delete(`${baseUrl}/setlists/${setlistId}.json`);
+
+export default { getMySetlists, deleteSetlist };
