@@ -17,6 +17,7 @@ class Home extends React.Component {
     setlists: [],
     songs: [],
     songSetlist: {},
+    setlistEditing: {},
   }
 
 getSetlists = () => {
@@ -51,7 +52,7 @@ removeFromSetlist = (songId) => {
   this.setState({ songSetlist: songSetlistCopy });
 }
 
-saveNewSetlist = (setlistName) => {
+makeNew = (setlistName) => {
   const newSetlist = { songs: { ...this.state.songSetlist }, name: setlistName };
   newSetlist.uid = firebase.auth().currentUser.uid;
   setlistsData.postSetlist(newSetlist)
@@ -62,8 +63,40 @@ saveNewSetlist = (setlistName) => {
     .catch(err => console.err('error in post setlist', err));
 }
 
+updateExisting = (setlistName) => {
+  const updateSetlist = { ...this.state.setlistEditing };
+  const setlistId = updateSetlist.id;
+  updateSetlist.songs = this.state.songSetlist;
+  updateSetlist.name = setlistName;
+  delete updateSetlist.id;
+  setlistsData.putSetlist( setlistId, updateSetlist )
+    .then(() => {
+      this.setState({ songSetlist: {}, setlistEditing: {} });
+      this.getSetlists();
+    })
+    .catch(err => console.error('unable to update', err));
+}
+
+saveNewSetlist = (setlistName) => {
+  if (Object.keys(this.state.setlistEditing).length > 0) {
+    this.updateExisting(setlistName);
+  } else {
+    this.makeNew(setlistName);
+  }
+}
+
+selectSetlistToEdit = (setlistId) => {
+  const selectedSetlist = this.setState.setlists.find(x => x.id === setlistId);
+  this.setState({ songSetlist: selectedSetlist.songs, setlistEditing: selectedSetlist });
+}
+
 render() {
-  const { songs, setlists, songSetlist } = this.state;
+  const {
+    songs,
+    setlists,
+    songSetlist,
+    setlistEditing,
+  } = this.state;
   return (
       <div className="Home">
         <div className="row">
@@ -76,10 +109,11 @@ render() {
               songSetlist={songSetlist}
               removeFromSetlist={this.removeFromSetlist}
               saveNewSetlist={this.saveNewSetlist}
+              setlistEditing={setlistEditing}
             />
         </div>
         <div className="col">
-        <Setlists setlists={setlists} deleteSetlist={this.deleteSetlist}/>
+        <Setlists setlists={setlists} deleteSetlist={this.deleteSetlist} selectSetlistToEdit={this.selectSetlistToEdit}/>
         </div>
       </div>
     </div>

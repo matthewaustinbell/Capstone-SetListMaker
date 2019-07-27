@@ -20,4 +20,10 @@ const deleteSetlist = setlistId => axios.delete(`${baseUrl}/setlists/${setlistId
 
 const postSetlist = newSetlist => axios.post(`${baseUrl}/setlists.json`, newSetlist);
 
-export default { getMySetlists, deleteSetlist, postSetlist };
+const putSetlist = (setlistId, updateSetlist) => axios.put(`${baseUrl}/setlists/${setlistId}.json`, updateSetlist);
+
+export default {
+  getMySetlists,
+  deleteSetlist,
+  postSetlist,
+  putSetlist };

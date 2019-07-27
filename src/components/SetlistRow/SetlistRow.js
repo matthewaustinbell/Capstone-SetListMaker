@@ -15,12 +15,18 @@ class SetlistRow extends React.Component {
     deleteSetlist(setlist.id);
   };
 
+  selectSetlist = (e) => {
+    e.preventDefault();
+    const { setlist, selectSetlistToEdit } = this.props;
+    selectSetlistToEdit(setlist.id);
+  }
+
   render() {
     const { setlist } = this.props;
     const numSong = Object.values(setlist.songs).reduce((a, b) => a + b);
     return (
       <tr>
-        <th>{setlist.name}</th>
+        <th><button className="link-button" onClick={this.selectSetlist}>{setlist.name}</button></th>
         <th>{numSong}</th>
         <th><button className="btn btn-light" onClick={this.deleteSetlistEvent}>x</button></th>
       </tr>
