@@ -16,6 +16,7 @@ class Home extends React.Component {
   state = {
     setlists: [],
     songs: [],
+    songSetlist: {},
   }
 
 getSetlists = () => {
@@ -35,7 +36,13 @@ componentDidMount() {
 deleteSetlist = (setlistId) => {
   setlistsData.deleteSetlist(setlistId)
     .then(() => this.getSetlists())
-    .catch(err => console.error('did not delete order', err));
+    .catch(err => console.error('did not delete setlist', err));
+}
+
+addSongToSetlist = (songId) => {
+  const songSetlistCopy = { ...this.state.songSetlist };
+  songSetlistCopy[songId] = songSetlistCopy[songId] + 1 || 1;
+  this.setState({ songSetlist: songSetlistCopy });
 }
 
 render() {
@@ -44,7 +51,7 @@ render() {
       <div className="Home">
         <div className="row">
           <div className="col">
-          <Catalog songs={songs}/>
+          <Catalog songs={songs} addSongToSetlist={this.addSongToSetlist}/>
         </div>
         <div className="col">
            <NewSetlist />

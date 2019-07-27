@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import songShape from '../../helpers/propz/songShapes';
 
@@ -7,6 +8,13 @@ import './Song.scss';
 class Song extends React.Component {
   static propTypes = {
     song: songShape.songShape,
+    addSongToSetlist: PropTypes.func.isRequired,
+  }
+
+  addClickEvent = (e) => {
+    const { song, addSongToSetlist } = this.props;
+    e.preventDefault();
+    addSongToSetlist(song.id);
   }
 
   render() {
@@ -24,6 +32,7 @@ class Song extends React.Component {
           <div>{song.tempo}</div>
           <button
           disabled={!isAvailable}
+          onClick={this.addClickEvent}
         >
           {isAvailable ? '+' : 'Need to Learn!'}
         </button>
