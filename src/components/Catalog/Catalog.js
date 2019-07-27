@@ -9,11 +9,12 @@ import './Catalog.scss';
 class Catalog extends React.Component {
   static propTypes = {
     songs: PropTypes.arrayOf(songShapes.songShape),
+    addSongToSetlist: PropTypes.func.isRequired,
   }
 
   render() {
     const songComponents = this.props.songs.map(song => (
-      <Song key={song.id} song={song}/>
+      <Song key={song.id} song={song} addSongToSetlist={this.props.addSongToSetlist}/>
     ));
     return (
       <div className="Catalog">

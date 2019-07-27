@@ -16,6 +16,7 @@ class Home extends React.Component {
   state = {
     setlists: [],
     songs: [],
+    songSetlist: {},
   }
 
 getSetlists = () => {
@@ -35,19 +36,47 @@ componentDidMount() {
 deleteSetlist = (setlistId) => {
   setlistsData.deleteSetlist(setlistId)
     .then(() => this.getSetlists())
-    .catch(err => console.error('did not delete order', err));
+    .catch(err => console.error('did not delete setlist', err));
+}
+
+addSongToSetlist = (songId) => {
+  const songSetlistCopy = { ...this.state.songSetlist };
+  songSetlistCopy[songId] = songSetlistCopy[songId] + 1 || 1;
+  this.setState({ songSetlist: songSetlistCopy });
+}
+
+removeFromSetlist = (songId) => {
+  const songSetlistCopy = { ...this.state.songSetlist };
+  delete songSetlistCopy[songId];
+  this.setState({ songSetlist: songSetlistCopy });
+}
+
+saveNewSetlist = (setlistName) => {
+  const newSetlist = { songs: { ...this.state.songSetlist }, name: setlistName };
+  newSetlist.uid = firebase.auth().currentUser.uid;
+  setlistsData.postSetlist(newSetlist)
+    .then(() => {
+      this.setState({ songSetlist: {} });
+      this.getSetlists();
+    })
+    .catch(err => console.err('error in post setlist', err));
 }
 
 render() {
-  const { songs, setlists } = this.state;
+  const { songs, setlists, songSetlist } = this.state;
   return (
       <div className="Home">
         <div className="row">
           <div className="col">
-          <Catalog songs={songs}/>
+          <Catalog songs={songs} addSongToSetlist={this.addSongToSetlist}/>
         </div>
         <div className="col">
-           <NewSetlist />
+           <NewSetlist
+              songs={songs}
+              songSetlist={songSetlist}
+              removeFromSetlist={this.removeFromSetlist}
+              saveNewSetlist={this.saveNewSetlist}
+            />
         </div>
         <div className="col">
         <Setlists setlists={setlists} deleteSetlist={this.deleteSetlist}/>

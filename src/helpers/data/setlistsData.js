@@ -18,4 +18,6 @@ const getMySetlists = uid => new Promise((resolve, reject) => {
 
 const deleteSetlist = setlistId => axios.delete(`${baseUrl}/setlists/${setlistId}.json`);
 
-export default { getMySetlists, deleteSetlist };
+const postSetlist = newSetlist => axios.post(`${baseUrl}/setlists.json`, newSetlist);
+
+export default { getMySetlists, deleteSetlist, postSetlist };
