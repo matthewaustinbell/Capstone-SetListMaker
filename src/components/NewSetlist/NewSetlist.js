@@ -7,6 +7,12 @@ class NewSetlist extends React.Component {
     setlistName: '',
   }
 
+  componentWillUpdate(nextProps) {
+    if (nextProps.setlistEditing !== this.props.setlistEditing && nextProps.setlistEditing.name) {
+      this.setState({ setlistName: nextProps.setlistEditing.name });
+    }
+  }
+
 nameChange = (e) => {
   e.preventDefault();
   this.setState({ setlistName: e.target.value });
@@ -42,7 +48,7 @@ nameChange = (e) => {
   }
 
   render() {
-    const { songSetlist } = this.props;
+    const { songSetlist, setlistEditing } = this.props;
     const { setlistName } = this.state;
     const setlistIds = Object.keys(songSetlist);
     const setlistExists = setlistIds.length > 0;
@@ -54,7 +60,7 @@ nameChange = (e) => {
     }, 0);
     return (
       <div className="NewSetlist">
-        <h1>New Setlist</h1>
+        <h1>{Object.keys(setlistEditing).length > 1 ? 'Edit Setlist' : 'New Setlist'}</h1>
         <form className='col-6 offset-3'>
           <div className="form-group">
             <label htmlFor="setlist-name">Setlist Name:</label>
