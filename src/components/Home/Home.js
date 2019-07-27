@@ -46,7 +46,7 @@ addSongToSetlist = (songId) => {
 }
 
 render() {
-  const { songs, setlists } = this.state;
+  const { songs, setlists, songSetlist } = this.state;
   return (
       <div className="Home">
         <div className="row">
@@ -54,7 +54,10 @@ render() {
           <Catalog songs={songs} addSongToSetlist={this.addSongToSetlist}/>
         </div>
         <div className="col">
-           <NewSetlist />
+           <NewSetlist
+              songs={songs}
+              songSetlist={songSetlist}
+            />
         </div>
         <div className="col">
         <Setlists setlists={setlists} deleteSetlist={this.deleteSetlist}/>
