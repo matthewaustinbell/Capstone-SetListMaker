@@ -26,4 +26,5 @@ export default {
   getMySetlists,
   deleteSetlist,
   postSetlist,
-  putSetlist };
+  putSetlist,
+};

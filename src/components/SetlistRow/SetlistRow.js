@@ -7,6 +7,7 @@ class SetlistRow extends React.Component {
   static propTypes = {
     setlist: setlistShapes.setlistShape,
     deleteSetlist: PropTypes.func.isRequired,
+    selectSetlistToEdit: PropTypes.func.isRequired,
   }
 
   deleteSetlistEvent = (e) => {

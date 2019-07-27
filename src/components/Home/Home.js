@@ -69,7 +69,7 @@ updateExisting = (setlistName) => {
   updateSetlist.songs = this.state.songSetlist;
   updateSetlist.name = setlistName;
   delete updateSetlist.id;
-  setlistsData.putSetlist( setlistId, updateSetlist )
+  setlistsData.putSetlist(setlistId, updateSetlist)
     .then(() => {
       this.setState({ songSetlist: {}, setlistEditing: {} });
       this.getSetlists();
