@@ -45,6 +45,12 @@ addSongToSetlist = (songId) => {
   this.setState({ songSetlist: songSetlistCopy });
 }
 
+removeFromSetlist = (songId) => {
+  const songSetlistCopy = { ...this.state.songSetlist };
+  delete songSetlistCopy[songId];
+  this.setState({ songSetlist: songSetlistCopy });
+}
+
 render() {
   const { songs, setlists, songSetlist } = this.state;
   return (
@@ -57,6 +63,7 @@ render() {
            <NewSetlist
               songs={songs}
               songSetlist={songSetlist}
+              removeFromSetlist={this.removeFromSetlist}
             />
         </div>
         <div className="col">

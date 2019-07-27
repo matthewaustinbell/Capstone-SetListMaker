@@ -3,11 +3,20 @@ import React from 'react';
 import './NewSetlist.scss';
 
 class NewSetlist extends React.Component {
+  state={
+    setlistName: '',
+  }
+
   renderSetlist = (key) => {
     const song = this.props.songs.find(x => x.id === key);
     // const count = this.props.songSetlist[key];
+    const xClickFunction = (e) => {
+      e.preventDefault();
+      this.props.removeFromSetlist(key);
+    };
+
     return (
-      <li>
+      <li key={key}>
         <div className="col-5">
           {song.name}
         </div>
@@ -15,7 +24,7 @@ class NewSetlist extends React.Component {
           {song.artist}
         </div>
         <div className="col-2">
-          <button className="btn btn-outline-dark">x</button>
+          <button className="btn btn-outline-dark" onClick={xClickFunction}>x</button>
         </div>
       </li>
     );
