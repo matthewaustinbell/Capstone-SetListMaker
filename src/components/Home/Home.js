@@ -51,6 +51,17 @@ removeFromSetlist = (songId) => {
   this.setState({ songSetlist: songSetlistCopy });
 }
 
+saveNewSetlist = (setlistName) => {
+  const newSetlist = { songs: { ...this.state.songSetlist }, name: setlistName };
+  newSetlist.uid = firebase.auth().currentUser.uid;
+  setlistsData.postSetlist(newSetlist)
+    .then(() => {
+      this.setState({ songSetlist: {} });
+      this.getSetlists();
+    })
+    .catch(err => console.err('error in post setlist', err));
+}
+
 render() {
   const { songs, setlists, songSetlist } = this.state;
   return (
@@ -64,6 +75,7 @@ render() {
               songs={songs}
               songSetlist={songSetlist}
               removeFromSetlist={this.removeFromSetlist}
+              saveNewSetlist={this.saveNewSetlist}
             />
         </div>
         <div className="col">
