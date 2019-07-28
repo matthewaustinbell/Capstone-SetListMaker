@@ -1,8 +1,20 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
+import songShapes from '../../helpers/propz/songShapes';
 import './NewSetlist.scss';
 
 class NewSetlist extends React.Component {
+  static propTypes = {
+    songs: PropTypes.arrayOf(songShapes.songShape),
+    songSetlist: PropTypes.object.isRequired,
+    setlistEditing: PropTypes.object.isRequired,
+    removeFromSetlist: PropTypes.func.isRequired,
+    saveNewSetlist: PropTypes.func.isRequired,
+
+  }
+
   state={
     setlistName: '',
   }

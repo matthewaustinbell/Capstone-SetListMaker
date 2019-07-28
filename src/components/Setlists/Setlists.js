@@ -10,10 +10,12 @@ class Setlists extends React.Component {
   static propTypes = {
     setlists: PropTypes.arrayOf(setlistShapes.setlistShape),
     deleteSetlist: PropTypes.func.isRequired,
+    selectSetlistToEdit: PropTypes.func.isRequired,
   }
 
   render() {
-    const setlistComponents = this.props.setlists.map(setlist => (
+    const { setlists } = this.props;
+    const setlistComponents = setlists.map(setlist => (
       <SetlistRow key={setlist.id} setlist={setlist} deleteSetlist={this.props.deleteSetlist} selectSetlistToEdit={this.props.selectSetlistToEdit}/>
     ));
 

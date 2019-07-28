@@ -69,7 +69,7 @@ updateExisting = (setlistName) => {
   updateSetlist.songs = this.state.songSetlist;
   updateSetlist.name = setlistName;
   delete updateSetlist.id;
-  setlistsData.putSetlist( setlistId, updateSetlist )
+  setlistsData.putSetlist(setlistId, updateSetlist)
     .then(() => {
       this.setState({ songSetlist: {}, setlistEditing: {} });
       this.getSetlists();
@@ -86,7 +86,7 @@ saveNewSetlist = (setlistName) => {
 }
 
 selectSetlistToEdit = (setlistId) => {
-  const selectedSetlist = this.setState.setlists.find(x => x.id === setlistId);
+  const selectedSetlist = this.state.setlists.find(x => x.id === setlistId);
   this.setState({ songSetlist: selectedSetlist.songs, setlistEditing: selectedSetlist });
 }
 
