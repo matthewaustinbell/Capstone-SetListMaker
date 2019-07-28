@@ -14,7 +14,7 @@ class Setlists extends React.Component {
   }
 
   render() {
-    const { setlists, deleteSetlist, selectSetlistToEdit } = this.props;
+    const { setlists } = this.props;
     const setlistComponents = setlists.map(setlist => (
       <SetlistRow key={setlist.id} setlist={setlist} deleteSetlist={this.props.deleteSetlist} selectSetlistToEdit={this.props.selectSetlistToEdit}/>
     ));
