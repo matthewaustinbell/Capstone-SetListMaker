@@ -1,6 +1,10 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 src/helpers/apiKeys.json
+src/styles/_colors.scss
+src/styles/_fonts.scss
+src/styles/_forms.scss
+src/styles/_normalize.scss
 
 # dependencies
 /node_modules

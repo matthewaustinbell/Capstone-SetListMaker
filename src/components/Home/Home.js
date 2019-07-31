@@ -104,6 +104,21 @@ render() {
           <Catalog songs={songs} addSongToSetlist={this.addSongToSetlist}/>
         </div>
         <div className="col">
+        <div className="title">
+              <header className="top">
+                <h1>
+                  Set
+                  {/* <span className="forMusicians">
+                    <span className="of">for</span>
+                    <span className="the">Musicians</span>
+                  </span> */}
+                  List
+                </h1>
+                <h3 className="tagline">
+                  <span>Your Next Show!</span>
+                </h3>
+              </header>
+            </div>
            <NewSetlist
               songs={songs}
               songSetlist={songSetlist}

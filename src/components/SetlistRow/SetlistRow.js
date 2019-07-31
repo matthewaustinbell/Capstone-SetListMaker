@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './SetlistRow.scss';
+
 import setlistShapes from '../../helpers/propz/setlistShapes';
 
 class SetlistRow extends React.Component {
