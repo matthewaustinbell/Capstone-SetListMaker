@@ -1,4 +1,18 @@
+@import '../../styles/_colors';
+
 .Catalog {
+  border: .5rem ridge #747474;
+  background: $white;
+  transition: all 0.3s;
+  box-shadow: 0 5px 5px $black;
+  overflow: scroll;
+  height: 90vh;
+  padding-top: 15px;
   background-color: #272727;
-  display: block;
+  // display: block;
+}
+
+h1 {
+  font-size: 2.5rem;
+  color: #FFE400;
 }

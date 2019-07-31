@@ -1,4 +1,23 @@
+@import '../../styles/_colors';
+
 .Song {
-  background-color: #272727;
+  // background-color: #272727;
   display: block;
+  border-bottom: 2px solid $black;
+  border-top: 1px solid $black;
+  padding: 2rem;
+  margin-bottom: 5px;
+  clear: both;
+  overflow: hidden;
+  color: $yellow;
+  p {
+    margin: 0;
+    font-size: 1.8rem;
+  }
+  .name {
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 }
