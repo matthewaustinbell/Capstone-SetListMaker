@@ -31,7 +31,7 @@ class Song extends React.Component {
           <div>{song.key}</div>
           <div>{song.tempo}</div>
           <button
-          className="btn btn-outline-dark"
+          className="btn btn-danger"
           disabled={!isAvailable}
           onClick={this.addClickEvent}
         >
