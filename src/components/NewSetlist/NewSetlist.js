@@ -1,7 +1,5 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
-
 import songShapes from '../../helpers/propz/songShapes';
 import './NewSetlist.scss';
 
